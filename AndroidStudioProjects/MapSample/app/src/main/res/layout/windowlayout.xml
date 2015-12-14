@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:paddingRight="3dp"
+android:paddingLeft="3dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/lineLayoutHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/info_txt_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/info_txt_operator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_gravity="center|right"
+            android:id="@+id/info_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:paddingLeft="5dp"
+
+            android:scaleType="fitCenter"
+            android:src="@drawable/info_icon" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

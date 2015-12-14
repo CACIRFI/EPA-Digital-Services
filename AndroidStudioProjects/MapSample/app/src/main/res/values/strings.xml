@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Leakage Incident Mapper</string>
+    <string name="title_activity_maps">Incident Map</string>
+    <string name="title_activity_main">Leakage Incident Mapper</string>
+    <string name="welcome">Welcome to the Pipeline Leakage Incident Mapper application.  Choose a filter below or click Go To Map to see all incidents.</string>
+    <string name="loading">Initial incident data is being loading, please wait.</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_incident_detail">Incident Detail</string>
+
+    <string name="hello_world">Hello world!</string>
+</resources>
