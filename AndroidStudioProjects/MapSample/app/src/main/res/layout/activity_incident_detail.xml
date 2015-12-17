@@ -1,11 +1,184 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.caci.mapsample.IncidentDetailActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.caci.mapsample.IncidentDetailActivity"
+    >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:orientation="vertical"
+            android:background="@color/bkgrnd">
 
-    <TextView android:id="@+id/detail_txt_operator" android:text="@string/hello_world" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Detail for Incident"
+            style="@style/Summary"
+            android:id="@+id/detail_lbl_summary" />
 
-</RelativeLayout>
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_operator" android:text="@string/detail_lbl_op" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_operator" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_op_code" android:text="@string/detail_lbl_op_code" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_op_code" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_addr" android:text="@string/detail_lbl_addr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_addr" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_city" android:text="@string/detail_lbl_city" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_city" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <LinearLayout style="@style/DetailGroup" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_date" android:text="@string/detail_lbl_date" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView style="@style/DetailValue" android:id="@+id/detail_txt_date" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/DetailGroup" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_time" android:text="@string/detail_lbl_time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView style="@style/DetailValue" android:id="@+id/detail_txt_time" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_cause" android:text="@string/detail_lbl_cause" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_cause" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_origin_leak" android:text="@string/detail_lbl_origin_leak" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_origin_leak" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <LinearLayout style="@style/DetailGroup" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_fat" android:text="@string/detail_lbl_fat" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView style="@style/DetailValue" android:id="@+id/detail_txt_fat" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/DetailGroup" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_inj" android:text="@string/detail_lbl_inj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView style="@style/DetailValue" android:id="@+id/detail_txt_inj" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_ignition" android:text="@string/detail_lbl_ignition" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_ignition" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_explosion" android:text="@string/detail_lbl_explosion" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_explosion" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_dist_sewer_cont" android:text="@string/detail_lbl_dist_sewer_cont" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_dist_sewer_cont" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_dist_sewer_impa" android:text="@string/detail_lbl_dist_sewer_impa" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_dist_sewer_impa" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_dist_water" android:text="@string/detail_lbl_dist_water" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_dist_water" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_dist_water_imp" android:text="@string/detail_lbl_dist_water_imp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_dist_water_imp" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_loc_leak" android:text="@string/detail_lbl_loc_leak" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_loc_leak" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_cover_depth" android:text="@string/detail_lbl_cover_depth" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_cover_depth" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_soil_info" android:text="@string/detail_lbl_soil_info" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_soil_info" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_soil_temp" android:text="@string/detail_lbl_soil_temp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_soil_temp" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_soil_ph" android:text="@string/detail_lbl_soil_ph" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_soil_ph" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_soil_resist" android:text="@string/detail_lbl_soil_resist" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_soil_resist" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_soil_test_year" android:text="@string/detail_lbl_soil_test_year" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_soil_test_year" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_rpt_by" android:text="@string/detail_lbl_rpt_by" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_rpt_by" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_mat_leaked" android:text="@string/detail_lbl_mat_leaked" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_mat_leaked" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_loc_corr" android:text="@string/detail_lbl_loc_corr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_loc_corr" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_desc_corr" android:text="@string/detail_lbl_desc_corr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_desc_corr" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_cause_corr" android:text="@string/detail_lbl_cause_corr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_cause_corr" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_soil_pot1" android:text="@string/detail_lbl_soil_pot1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_soil_pot1" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_soil_pot2" android:text="@string/detail_lbl_soil_pot2" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_soil_pot2" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailGroup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/DetailLabel" android:id="@+id/detail_lbl_cause_leak" android:text="@string/detail_lbl_cause_leak" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView style="@style/DetailValue" android:id="@+id/detail_txt_cause_leak" android:text="@string/empty" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

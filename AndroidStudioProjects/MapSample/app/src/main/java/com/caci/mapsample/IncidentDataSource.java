@@ -44,7 +44,7 @@ public class IncidentDataSource {
         int numIncidentsGeocoded = 0;
         int numIncidentsNotGeocoded = 0;
         int recordsLoaded = 0;
-        int max_records = 100;
+        int max_records = 200;
         InputStream inputStream = ctx.getResources().openRawResource(R.raw.incidents);
 
         InputStreamReader inputreader = new InputStreamReader(inputStream);
@@ -114,6 +114,42 @@ public class IncidentDataSource {
         values.put(IncidentDbHelper.COL_ZIP, incident.zip);
         values.put(IncidentDbHelper.COL_LAT, incident.latitude);
         values.put(IncidentDbHelper.COL_LONG, incident.longitude);
+        values.put(IncidentDbHelper.COL_INCIDENT_DATE, incident.date);
+        values.put(IncidentDbHelper.COL_DETECTION_TIME, incident.detectionTime);
+        values.put(IncidentDbHelper.COL_ORIGIN_LEAK, incident.originLeak);
+        values.put(IncidentDbHelper.COL_ORIGIN_LEAK_OTHER, incident.originLeakOther);
+        values.put(IncidentDbHelper.COL_FATALITIES, incident.fatalities);
+        values.put(IncidentDbHelper.COL_INJURIES, incident.injuries);
+        values.put(IncidentDbHelper.COL_GAS_IGNITED, incident.gasIgnited);
+        values.put(IncidentDbHelper.COL_EXPLOSION_OCCURED, incident.explosionOccured);
+        values.put(IncidentDbHelper.COL_SECONDARY_EXPLOSIONS_FIRE, incident.secondaryExplFire);
+        values.put(IncidentDbHelper.COL_DISTANCE_SEWER_STORM_CONT, incident.distanceStormCont);
+        values.put(IncidentDbHelper.COL_DISTANCE_SEWER_STORM_IMPA, incident.distanceSewerStorm);
+        values.put(IncidentDbHelper.COL_DISTANCE_SEWER_OTHER_CONT, incident.distanceSewerOther);
+        values.put(IncidentDbHelper.COL_DISTANCE_SEWER_OTHER_IMPA, incident.distanceSewerOtherImp);
+        values.put(IncidentDbHelper.COL_DISTANCE_WATER_CONTR, incident.distanceWaterContr);
+        values.put(IncidentDbHelper.COL_DISTANCE_WATER_IMPAIRED, incident.distanceWaterImpaired);
+        values.put(IncidentDbHelper.COL_LOCATION_LEAK, incident.locationLeak);
+        values.put(IncidentDbHelper.COL_LOCATION_LEAK_OTHER, incident.locationLeakOther);
+        values.put(IncidentDbHelper.COL_COVER_DEPTH, incident.coverDepth);
+        values.put(IncidentDbHelper.COL_SOIL_INFORMATION, incident.soilInformation);
+        values.put(IncidentDbHelper.COL_SOIL_TEMPERATURE, incident.soilTemp);
+        values.put(IncidentDbHelper.COL_REPORTED_BY, incident.reportedBy);
+        values.put(IncidentDbHelper.COL_REPORTED_BY_OTHER, incident.reportedByOther);
+        values.put(IncidentDbHelper.COL_MATERIAL_LEAKED_D, incident.materialLeaked);
+        values.put(IncidentDbHelper.COL_MATERIAL_LEAKED_D_OTHER, incident.materialLeakedOther);
+        values.put(IncidentDbHelper.COL_LOCATION_CORROSION, incident.locCorrosion);
+        values.put(IncidentDbHelper.COL_DESCRIPTION_CORROSION, incident.descCorrosion);
+        values.put(IncidentDbHelper.COL_CAUSE_CORROSION, incident.causeCorrosion);
+        values.put(IncidentDbHelper.COL_CAUSE_CORROSION_OTHER, incident.causeCorrosionOther);
+        values.put(IncidentDbHelper.COL_PH_SOIL, incident.phSoil);
+        values.put(IncidentDbHelper.COL_SOIL_RESISTIVITY, incident.soilResist);
+        values.put(IncidentDbHelper.COL_SOIL_TEST_YEAR, incident.soilTestYear);
+        values.put(IncidentDbHelper.COL_PIPE_SOIL_POTENTIAL_1, incident.pipeSoilPotential1);
+        values.put(IncidentDbHelper.COL_PIPE_SOIL_POTENTIAL_2, incident.pipeSoilPotential2);
+        values.put(IncidentDbHelper.COL_CAUSE_LEAK, incident.causeLeak);
+        values.put(IncidentDbHelper.COL_CAUSE_LEAK_OTHER, incident.causeLeakOther);
+
         long insertId = database.insert(IncidentDbHelper.TABLE_NAME, null, values);
         Cursor cursor = database.query(IncidentDbHelper.TABLE_NAME, IncidentDbHelper.allColumns,
                 IncidentDbHelper.COL_ID + " = " + insertId, null, null, null, null);
@@ -142,6 +178,40 @@ public class IncidentDataSource {
         incident.operatorCode = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_OP_CODE));
         incident.latitude = cursor.getDouble(cursor.getColumnIndex(IncidentDbHelper.COL_LAT));
         incident.longitude = cursor.getDouble(cursor.getColumnIndex(IncidentDbHelper.COL_LONG));
+        incident.date = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_INCIDENT_DATE));
+        incident.detectionTime = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_DETECTION_TIME));
+        incident.originLeak = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_ORIGIN_LEAK));
+        incident.originLeakOther = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_ORIGIN_LEAK_OTHER));
+        incident.fatalities = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_FATALITIES));
+        incident.injuries = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_INJURIES));
+        incident.gasIgnited = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_GAS_IGNITED));
+        incident.explosionOccured = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_EXPLOSION_OCCURED));
+        incident.secondaryExplFire = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_SECONDARY_EXPLOSIONS_FIRE));
+        incident.distanceStormCont = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_DISTANCE_SEWER_STORM_CONT));
+        incident.distanceSewerStorm = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_DISTANCE_SEWER_STORM_IMPA));
+        incident.distanceSewerOther = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_DISTANCE_SEWER_OTHER_CONT));
+        incident.distanceSewerOtherImp = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_DISTANCE_SEWER_OTHER_IMPA));
+        incident.distanceWaterContr = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_DISTANCE_WATER_CONTR));
+        incident.distanceWaterImpaired = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_DISTANCE_WATER_IMPAIRED));
+        incident.locationLeak = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_LOCATION_LEAK));
+        incident.locationLeakOther = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_LOCATION_LEAK_OTHER));
+        incident.coverDepth = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_COVER_DEPTH));
+        incident.soilInformation = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_SOIL_INFORMATION));
+        incident.soilTemp = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_SOIL_TEMPERATURE));
+        incident.reportedBy = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_REPORTED_BY));
+        incident.reportedByOther = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_REPORTED_BY_OTHER));
+        incident.materialLeaked = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_MATERIAL_LEAKED_D));
+        incident.materialLeakedOther = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_MATERIAL_LEAKED_D_OTHER));
+        incident.locCorrosion = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_LOCATION_CORROSION));
+        incident.descCorrosion = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_DESCRIPTION_CORROSION));
+        incident.causeCorrosion = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_CAUSE_CORROSION));
+        incident.causeCorrosionOther = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_CAUSE_CORROSION_OTHER));
+        incident.phSoil = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_PH_SOIL));
+        incident.soilResist = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_SOIL_RESISTIVITY));
+        incident.soilTestYear = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_SOIL_TEST_YEAR));
+        incident.pipeSoilPotential1 = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_PIPE_SOIL_POTENTIAL_1));
+        incident.pipeSoilPotential2 = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_PIPE_SOIL_POTENTIAL_2));
+        incident.causeLeak = cursor.getString(cursor.getColumnIndex(IncidentDbHelper.COL_CAUSE_LEAK));
         return incident;
     }
 
@@ -201,13 +271,9 @@ public class IncidentDataSource {
     }
 
     public boolean isDatabaseEmpty() {
-        List<Incident> l = getAll();
-        System.out.println("********************* all count = "+l.size());
-
         Cursor cursor = database.query(IncidentDbHelper.TABLE_NAME,IncidentDbHelper.allColumns, null, null, null, null, null, "1");
         boolean isEmpty = !(cursor.getCount()>0);
         cursor.close();
-        System.out.println("*********************** is empty = "+isEmpty);
         return isEmpty;
     }
 

@@ -21,7 +21,7 @@ public class Incident {
     public String county;//INCIDENT_COUNTY
     public String state; //INCIDENT_STATE
     public String zip; //ZIP_CODE
-    public Date date; //INCIDENT_DATE
+    public String date; //INCIDENT_DATE
     public String detectionTime; //DETECTION_TIME
     public String originLeak; // ORIGIN_LEAK
     public String originLeakOther; //ORIGIN_LEAK_OTHER
@@ -66,7 +66,7 @@ public class Incident {
 
     public Incident() {}
 
-    public Incident(Long reportId, String cause, String operatorCode, String operator, String address, String city, String county, String state, String zip,Date date) {
+    public Incident(Long reportId, String cause, String operatorCode, String operator, String address, String city, String county, String state, String zip, String date) {
         this.address = address;
         this.cause = cause;
         this.city = city;
@@ -95,7 +95,7 @@ public class Incident {
         this.county = county;//INCIDENT_COUNTY
         this.state = state; //INCIDENT_STATE
         this.zip = zip; //ZIP_CODE
-        //this.date; //INCIDENT_DATE
+        this.date = date; //INCIDENT_DATE
         this.detectionTime = detectionTime; //DETECTION_TIME
         this.originLeak = originLeak; // ORIGIN_LEAK
         this.originLeakOther = originLeakOther; //ORIGIN_LEAK_OTHER

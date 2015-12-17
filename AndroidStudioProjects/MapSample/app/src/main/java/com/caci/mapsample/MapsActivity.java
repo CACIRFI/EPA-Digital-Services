@@ -105,7 +105,6 @@ public class MapsActivity extends FragmentActivity {
                 }
             });
 
-
             // When marker clicked, go to detail window
             mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                 @Override
@@ -116,56 +115,6 @@ public class MapsActivity extends FragmentActivity {
                         intent.putExtra("incidentId", i._id);
                         startActivity(intent);
 
-//                        String markerTitle = marker.getTitle();
-//
-//                        ArrayList<OrganizationProfile> orgProfiles = WhereDojActivity.markerOrgLoc.get(marker);
-//                        ArrayList<String> orgAbrevs = new ArrayList<String>();
-//                        HashMap<String,OrganizationProfile> tempOrgProfilesHash = new HashMap<String,OrganizationProfile>();
-//                        for( OrganizationProfile orgProf : orgProfiles)
-//                        {
-//                            tempOrgProfilesHash.put(orgProf.key, orgProf);
-//                        }
-//
-//                        ArrayList<UsaoDistrictProfile> usaoDistrictProfiles = markerToOrigLatLngKey.get(marker);//marker.getPosition().latitude+","+marker.getPosition().longitude;
-//                        if(usaoDistrictProfiles != null)
-//                        {
-//                            HashMap<String,UsaoDistrictProfile> districtProfilesCombined = new HashMap();
-//                            for(UsaoDistrictProfile tempDistProfile : usaoDistrictProfiles )
-//                            {
-//                                districtProfilesCombined.put(tempDistProfile.nameAbrev, tempDistProfile);
-//                            }
-//                            usaoDistrictProfiles.clear();
-//                            usaoDistrictProfiles.addAll(districtProfilesCombined.values());
-//                        }
-//
-//                        int i = 0;
-//                        for( OrganizationProfile orgProf : tempOrgProfilesHash.values())
-//                        {
-//                            if(orgProf.key.equalsIgnoreCase("USAO"))
-//                            {
-//                                if(usaoDistrictProfiles != null)
-//                                {
-//                                    ListOfAgencies.orgsAndUsaoDistricts.addAll(usaoDistrictProfiles);
-//                                }
-//                                else
-//                                {
-//                                    ListOfAgencies.orgsAndUsaoDistricts.add(orgProf);
-//                                }
-//                            }
-//                            else
-//                            {
-//                                ListOfAgencies.orgsAndUsaoDistricts.add(orgProf);
-//                            }
-//                        }
-//
-//                        ArrayList<OrganizationProfile> tempOrgProfiles = WhereDojActivity.markerOrgLoc.get(marker);
-//                        OrgLocationData orgLocData = PopupAdapter.getOrgLocDataForThisMarker(marker, tempOrgProfiles.get(0).locationList );
-//                        //CityLatLong cityLatLng = Utility.latLonToCityHash.get(marker.getPosition());
-//                        String cityState = orgLocData.city + ", " + orgLocData.state;
-//                        ListOfAgencies.whoFor = cityState;
-//                        Intent intent = new Intent(getApplicationContext(), ListOfAgencies.class);
-//                        //intent.putExtra("ORG_PROFILES", orgAbrev );
-//                        startActivity(intent);
                     } catch (Exception e) {
                         System.out.println("**************** exception"+e.getMessage());
                     }

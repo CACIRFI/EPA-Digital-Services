@@ -6,6 +6,39 @@
     <string name="loading">Initial incident data is being loading, please wait.</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_incident_detail">Incident Detail</string>
+    <string name="empty"></string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="detail_lbl_id">Report ID</string>
+    <string name="detail_lbl_op">Operator</string>
+    <string name="detail_lbl_op_code">Operator Code</string>
+    <string name="detail_lbl_cause">Cause of Incident</string>
+    <string name="detail_lbl_addr">Address</string>
+    <string name="detail_lbl_city">City, State</string>
+    <string name="detail_lbl_date">Incident Date</string>
+    <string name="detail_lbl_time">Detection Time</string>
+    <string name="detail_lbl_origin_leak">Origin of Leak</string>
+    <string name="detail_lbl_fat"># Fatalities</string>
+    <string name="detail_lbl_inj"># Injuries</string>
+    <string name="detail_lbl_ignition">Gas Ignited</string>
+    <string name="detail_lbl_explosion">Explosion Occurred</string>
+    <string name="detail_lbl_dist_sewer_cont">Distance Sewer Cont</string>
+    <string name="detail_lbl_dist_sewer_impa">Distance Sewer Impaired</string>
+    <string name="detail_lbl_dist_water">Dist Water</string>
+    <string name="detail_lbl_dist_water_imp">Distance Water Impaired</string>
+    <string name="detail_lbl_loc_leak">Location of Leak</string>
+    <string name="detail_lbl_cover_depth">Cover Depth</string>
+    <string name="detail_lbl_soil_info">Soil Information</string>
+    <string name="detail_lbl_soil_temp">Soil Temperature</string>
+    <string name="detail_lbl_soil_ph">Soil PH</string>
+    <string name="detail_lbl_soil_resist">Soil Resistivity</string>
+    <string name="detail_lbl_soil_test_year">Year Soil Tested</string>
+    <string name="detail_lbl_rpt_by">Reported By</string>
+    <string name="detail_lbl_mat_leaked">Material Leaked</string>
+    <string name="detail_lbl_loc_corr">Location of Corrosion</string>
+    <string name="detail_lbl_desc_corr">Description of Corrosion</string>
+    <string name="detail_lbl_cause_corr">Cause of Corrosion</string>
+    <string name="detail_lbl_soil_pot1">Pipe Soil Potential 1</string>
+    <string name="detail_lbl_soil_pot2">Pipe Soil Potential 2</string>
+    <string name="detail_lbl_cause_leak">Cause of Leak</string>
+
 </resources>
