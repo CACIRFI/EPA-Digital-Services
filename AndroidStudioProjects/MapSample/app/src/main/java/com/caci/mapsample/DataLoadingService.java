@@ -6,6 +6,8 @@ import android.content.Context;
 import android.support.v4.content.LocalBroadcastManager;
 
 /**
+ * This is the background service used for the initial incident data load.  Sends broadcase
+ * when data load has completed.
  * An {@link IntentService} subclass for handling asynchronous task requests in
  * a service on a separate handler thread.
  */
@@ -18,7 +20,6 @@ public class DataLoadingService extends IntentService {
     protected void onHandleIntent(Intent intent) {
 
         IncidentDataSource ds = MainActivity.incidentDataSource;
-//        ds.deleteAll();
         ds.loadInitialIncidents(this);
 
         // Broadcasts that data loading is complete

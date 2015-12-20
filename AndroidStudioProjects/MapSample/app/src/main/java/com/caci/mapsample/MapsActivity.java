@@ -28,10 +28,21 @@ public class MapsActivity extends FragmentActivity {
 
     private Map<Marker,Incident> incidentMarkerMap = new HashMap<Marker, Incident>();
 
+    //Optional filters
+    private String stateFilter;
+    private String causeFilter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            stateFilter = extras.getString("stateFilter");
+            causeFilter = extras.getString("causeFilter");
+        }
+
         setUpMapIfNeeded();
     }
 
@@ -44,7 +55,7 @@ public class MapsActivity extends FragmentActivity {
     /**
      * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
      * installed) and the map has not already been instantiated.. This will ensure that we only ever
-     * call {@link #addMapData()} once when {@link #mMap} is not null.
+     * call {@link #addMapData()} ()} once when {@link #mMap} is not null.
      * <p/>
      * If it isn't installed {@link SupportMapFragment} (and
      * {@link com.google.android.gms.maps.MapView MapView}) will show a prompt for the user to
@@ -130,7 +141,7 @@ public class MapsActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void addMapData() {
-        List<Incident> incidentList = MainActivity.incidentDataSource.getAll();
+        List<Incident> incidentList = MainActivity.incidentDataSource.getIncidents(stateFilter, causeFilter);
         for (Incident incident : incidentList) {
             Marker m = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(incident.latitude, incident.longitude)));

@@ -2,11 +2,16 @@
     <string name="app_name">Leakage Incident Mapper</string>
     <string name="title_activity_maps">Incident Map</string>
     <string name="title_activity_main">Leakage Incident Mapper</string>
-    <string name="welcome">Welcome to the Pipeline Leakage Incident Mapper application.  Choose a filter below or click Go To Map to see all incidents.</string>
-    <string name="loading">Initial incident data is being loading, please wait.</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_incident_detail">Incident Detail</string>
     <string name="empty"></string>
+
+    <string name="splash_lbl_welcome">Welcome to the Pipeline Leakage Incident Mapper demo application.  Choose a filter below or click Go To Map to see all incidents.</string>
+    <string name="splash_lbl_loading">Initial incident data is being loading, please wait.</string>
+    <string name="splash_lbl_map">Go To Map</string>
+    <string name="splash_lbl_filter">Filters</string>
+    <string name="splash_lbl_filter_state">State Filter:</string>
+    <string name="splash_lbl_filter_cause">Cause Filter:</string>
 
     <string name="detail_lbl_id">Report ID</string>
     <string name="detail_lbl_op">Operator</string>
@@ -40,5 +45,59 @@
     <string name="detail_lbl_soil_pot1">Pipe Soil Potential 1</string>
     <string name="detail_lbl_soil_pot2">Pipe Soil Potential 2</string>
     <string name="detail_lbl_cause_leak">Cause of Leak</string>
+
+
+    <string-array name="state_array">
+        <item>Show All</item>
+        <item>Alabama</item>
+        <item>Arizona</item>
+        <item>Arkansas</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>District of Columbia</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Iowa</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Maryland</item>
+        <item>Massachusetts</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Mississippi</item>
+        <item>Missouri</item>
+        <item>Montana</item>
+        <item>Nebraska</item>
+        <item>Nevada</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>New York</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Pennsylvania</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Virginia</item>
+        <item>Washington</item>
+        <item>Wisconsin</item>
+    </string-array>
+
+    <string-array name="cause_array">
+        <item>Show All</item>
+        <item>CONSTRUCTION DEFECT/MATERIAL FAILURE</item>
+        <item>CORROSION</item>
+        <item>DAMAGE BY OUTSIDE FORCES</item>
+        <item>OTHER</item>
+    </string-array>
 
 </resources>

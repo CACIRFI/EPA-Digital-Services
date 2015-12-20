@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
+ * Used to define and manage the incident database structure
  * Created by Mike Coddington on 12/7/2015.
  */
 public class IncidentDbHelper extends SQLiteOpenHelper {

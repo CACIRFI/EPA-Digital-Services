@@ -1,14 +1,15 @@
 package com.caci.mapsample;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 
+/**
+ * Activity for displaying incident detail
+ */
 public class IncidentDetailActivity extends Activity {
 
     @Override
@@ -58,6 +59,12 @@ public class IncidentDetailActivity extends Activity {
         }
     }
 
+    /**
+     * Helper for adding a label/value pair to the view
+     * @param txtLabel
+     * @param txtValue
+     * @param value
+     */
     private void setupDetailGroup(TextView txtLabel, TextView txtValue, String value) {
         txtLabel.setText(txtLabel.getText()+":");
         txtValue.setText(" "+value);

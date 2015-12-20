@@ -21,9 +21,14 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
+ * Helper class for interacting with the incident database
  * Created by Mike Coddington on 12/7/2015.
  */
 public class IncidentDataSource {
+
+    //Used to cap the number of incidents that will be loaded
+    public final static int  MAX_INCIDENTS_TO_LOAD = 200;
+    public final static int  EXPECTED_FIELD_COUNT = 48;
 
     private SQLiteDatabase database;
     private IncidentDbHelper dbHelper;
@@ -33,30 +38,30 @@ public class IncidentDataSource {
     }
 
     /**
-     * Populates the database from the hardcoded 'incidents' input file that must be packaged with the app
+     * Populates the database from the hardcoded 'incidents' input file that must be packaged with the app.
+     * Each incident is geocoded, or discarded if geocode fails.
      * @param ctx
      */
     public void loadInitialIncidents(Context ctx) {
         //Only proceed if the database is not empty
         if (!isDatabaseEmpty()) return;
 
-        Geocoder geocoder = new Geocoder(ctx);
-        int numIncidentsGeocoded = 0;
-        int numIncidentsNotGeocoded = 0;
-        int recordsLoaded = 0;
-        int max_records = 200;
+        //Open input file
         InputStream inputStream = ctx.getResources().openRawResource(R.raw.incidents);
 
+        Geocoder geocoder = new Geocoder(ctx);
         InputStreamReader inputreader = new InputStreamReader(inputStream);
         BufferedReader buffreader = new BufferedReader(inputreader);
         String line;
+        int recordsLoaded = 0;
 
         try {
+            //Each line is expected to be a comma separated record with 48 entries.  See constructor for expected order of fields
             while (( line = buffreader.readLine()) != null) {
-                //Each line is expected to be a comma separated record with 48 entries.  See constructor for expected order of fields
+                //If final line ends in comma, add space so that split functions does not ignore
                 if (line.endsWith(",")) line+=" ";
                 String[] row = line.split(",");
-                if (row.length == 48) {
+                if (row.length == EXPECTED_FIELD_COUNT) {
                     Incident incident = new Incident(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10],
                             row[11],row[12],row[13],row[14],row[15],row[16],row[17],row[18],row[19],row[20],row[21],row[22],row[23],row[24],
                             row[25],row[26],row[27],row[28],row[29],row[30],row[31],row[32],row[33],row[34],row[35],row[36],row[37],row[38],
@@ -71,16 +76,15 @@ public class IncidentDataSource {
                             Address addr = addressList.get(0);
                             incident.latitude = addr.getLatitude();
                             incident.longitude = addr.getLongitude();
-                            numIncidentsGeocoded++;
+                            recordsLoaded++;
                             addIncident(incident);
-                        } else {
-                            numIncidentsNotGeocoded++;
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                if (max_records==numIncidentsGeocoded) break;
+                //Halt loading process when the max is hit
+                if (MAX_INCIDENTS_TO_LOAD==recordsLoaded) break;
             }
         } catch (IOException e) {
             throw new RuntimeException("Error in reading CSV file: "+e);
@@ -92,8 +96,6 @@ public class IncidentDataSource {
                 throw new RuntimeException("Error while closing input stream: "+e);
             }
         }
-        System.out.println("loading complete");
-
     }
 
     /**
@@ -222,7 +224,6 @@ public class IncidentDataSource {
      */
     public Incident getIncident(Long incidentId) {
         Incident i = null;
-
         String selectQuery = "SELECT  * FROM " + IncidentDbHelper.TABLE_NAME + " WHERE "
                 + IncidentDbHelper.COL_ID + " = " + incidentId;
         Cursor cursor = database.rawQuery(selectQuery, null);
@@ -234,15 +235,59 @@ public class IncidentDataSource {
         return i;
     }
 
+
+    /**
+     * Retrieves incidents that match the passed in filters
+     * @param stateFilter Should be of the format of a state abbreviation
+     * @param causeFilter
+     * @return
+     */
+    public List<Incident> getIncidents(String stateFilter, String causeFilter) {
+        boolean useStateFilter = (stateFilter!=null && stateFilter.trim().length()>0);
+        boolean useCauseFilter = (causeFilter!=null && causeFilter.trim().length()>0);
+
+        //use return all if no filters passed in
+        if (!useStateFilter && !useCauseFilter){
+            return getAll();
+        }
+
+        String selection = "";
+        List<String> selectionArgs = new ArrayList<String>();
+        if (useStateFilter) {
+            selection += IncidentDbHelper.COL_STATE + " = ? ";
+            selectionArgs.add(stateFilter);
+        }
+        if (useCauseFilter) {
+            if (useStateFilter) selection += " AND " ;
+            selection += IncidentDbHelper.COL_CAUSE+ " = ? ";
+            selectionArgs.add(causeFilter);
+        }
+
+        Cursor cursor = database.query(IncidentDbHelper.TABLE_NAME, IncidentDbHelper.allColumns, selection, selectionArgs.toArray(new String[selectionArgs.size()]), null, null, null);
+        List<Incident> incidents = new ArrayList<Incident>();
+        if (cursor!=null) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Incident incident = cursorToIncident(cursor);
+                incidents.add(incident);
+                cursor.moveToNext();
+            }
+        }
+
+        // make sure to close the cursor
+        cursor.close();
+        return incidents;
+    }
+
+
+
     /**
      * Retrieves all incidents from the database
      * @return
      */
     public List<Incident> getAll() {
         List<Incident> incidents = new ArrayList<Incident>();
-
         Cursor cursor = database.query(IncidentDbHelper.TABLE_NAME,IncidentDbHelper.allColumns, null, null, null, null, null);
-
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Incident incident = cursorToIncident(cursor);
